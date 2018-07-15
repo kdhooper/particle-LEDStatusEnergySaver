@@ -4,19 +4,26 @@
 
 This class is used like any other custom blink pattern class in the Particle environment. (See https://docs.particle.io/reference/firmware/photon/#ledstatus-class)
 
+Special attention has been paid to making this work correctly even when the CPU is severely throttled.
+
 ## Description
 
-This custom Status LED pattern will blink ON for about 50ms and OFF for about 50ms for each flash that is specified.
+This custom Status LED pattern will blink ON for about 50ms and OFF for about 100ms for each flash that is specified.
+
+50ms is approximately the optimal on-time to register with maximum brightness in the eye, and 100ms provides enough off-time to easily distinguish the number of flashes.
+
 For example, if `Period` is `1000` and `#Flashes` is `3`, the blink pattern will be:
 
 ```
-    |----250ms----|----------------750ms----------------------|
-ON  ___   ___   ___
-OFF    ___   ___   ___________________________________________
+    |--------350ms-------|-----------650ms------------------|
+ON  ___      ___      ___
+OFF    ______   ______   _____________________________________
     |----------------------1000 ms----------------------------|
 ```
 
-Caution: This library does not make an effort to filter nonsensical parameters, so make sure at least that `Period` > 50ms x `Flashes`.
+Caution: This library does not make an effort to filter nonsensical parameters, so make sure at least that
+
+`Period` > 50ms x `#Flashes` + 100ms x `#Flashes`.
 
 Constructor:
 `LEDStatusEnergySaver( Priority, Color, Period, #Flashes )`
