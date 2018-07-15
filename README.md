@@ -4,7 +4,7 @@
 
 This class is used like any other custom blink pattern class in the Particle environment. (See https://docs.particle.io/reference/firmware/photon/#ledstatus-class)
 
-##Description
+## Description
 
 This custom Status LED pattern will blink ON for about 50ms and OFF for about 50ms for each flash that is specified.
 For example, if `Period` is `1000` and `#Flashes` is `3`, the blink pattern will be:
@@ -21,7 +21,7 @@ Caution: This library does not make an effort to filter nonsensical parameters, 
 Constructor:
 `LEDStatusEnergySaver( Priority, Color, Period, #Flashes )`
 
-##Usage:
+## Usage:
 
 ```cpp
 // Declaration
@@ -38,7 +38,7 @@ LEDStatusEnergySaver LEDLowPowerSensorDisabled(
 
 
 // Return to default status LED behavior
-void stateA {
+void stateA() {
   LEDLowPowerSensorEnabled.setActive(false);
   LEDLowPowerSensorDisabled.setActive(false);
 }
